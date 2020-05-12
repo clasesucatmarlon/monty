@@ -1,5 +1,4 @@
 #include "monty.h"
-int push_arg = 0;
 /**
  * main - function principal
  * @ac: int num of arguments
