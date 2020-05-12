@@ -1,15 +1,23 @@
 #include "monty.h"
+int push_arg = 0;
 /**
- * 
- * 
+ * main - function principal
+ * @ac: int num of arguments
+ * @av: opcode file
+ * Return: 0
  */
-int main(int argc, char **argv)
+
+int main(int ac, char **av)
 {
-    if (argc != 2)
-    {
-        printf("USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
-    stack_principal(argv[1]);
-    return 0;
+	stack_t *stack;
+
+	stack = NULL;
+	if (ac != 2)
+	{
+		printf("USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	read_file(av[1], &stack);
+	/* recordar liberar memorias */
+	return (0);
 }
