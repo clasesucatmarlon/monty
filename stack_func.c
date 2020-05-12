@@ -44,7 +44,7 @@ void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		printf("%d\n", runner->n);
 		runner = runner->next;
 	}
-
+}
 /**
  * _pint - print int a top of stack
  * @stack: pointer to linked list stack
@@ -61,7 +61,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", runner->n);
-
+}
 /**
  * free_dlistint - free a list
  * @head: pointer to first node
