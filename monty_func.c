@@ -1,4 +1,5 @@
 #include "monty.h"
+int push_arg;
 /**
  * read_file - reads a bytecode file and runs commands
  * @filename: name to file
@@ -100,13 +101,13 @@ int isnumber(char *str)
  */
 char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 {
-	char *op_code, *push, *arg;
+	char *op_code, *arg;
 
-	push = "push";
 	op_code = strtok(line, "\n ");
+
 	if (op_code == NULL)
 		return (NULL);
-	if (strcmp(op_code, push) == 0)
+	if (strcmp(op_code, "push") == 0)
 	{
 		arg = strtok(NULL, "\n ");
 		if (isnumber(arg) == 1 && arg != NULL)
