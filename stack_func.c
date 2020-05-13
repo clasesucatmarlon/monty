@@ -22,6 +22,7 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		*stack = new;
 		return;
 	}
+
 	(*stack)->prev = new;
 	new->n = push_arg;
 	new->next = *stack;
@@ -30,7 +31,7 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 }
 
 /**
- * _pall - print all
+ * _pall - print all function
  * @stack: pointer to linked list stack
  * @line_number: number of line opcode occurs on
  */
@@ -45,10 +46,12 @@ void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		runner = runner->next;
 	}
 }
+
 /**
  * _pint - print int a top of stack
  * @stack: pointer to linked list stack
  * @line_number: number of line opcode occurs on
+ *
  */
 void _pint(stack_t **stack, unsigned int line_number)
 {
@@ -57,14 +60,16 @@ void _pint(stack_t **stack, unsigned int line_number)
 	runner = *stack;
 	if (runner == NULL)
 	{
-		printf("L<%d>: can't pint, stack empty\n", line_number);
+		printf("L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", runner->n);
 }
+
 /**
  * free_dlistint - free a list
  * @head: pointer to first node
+ *
  */
 void free_dlistint(stack_t *head)
 {
@@ -77,22 +82,23 @@ void free_dlistint(stack_t *head)
 		head = tmp;
 	}
 }
+
 /**
- * _pop - remove data a list
- * @stack: pointer to linked list stack
- * @line_number: number of line opcode occurs on
+ * free_dlistint - free a list
+ * @head: pointer to first node
+ *
  */
 void _pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *nodo = *stack;
-
-	if (stack == NULL || *stack == NULL)
-	{
-		printf("L<%d>: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	*stack = nodo->next;
-	if (*stack != NULL)
-		(*stack)->prev = NULL;
-	free(nodo);
+    stack_t *nodo = *stack;
+ 
+    if (stack == NULL || *stack == NULL)
+    {
+        printf("L<%d>: can't pop an empty stack\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+    *stack = nodo->next;
+    if (*stack != NULL)
+        (*stack)->prev = NULL;
+    free(nodo);
 }
