@@ -6,8 +6,9 @@
 #include <unistd.h>
 #include <ctype.h>
 
-/*--- Struct Definitions ---*/
+/*Variable global*/
 extern int push_arg;
+/*--- Struct Definitions ---*/
 /**
  * struct stack_s - doubly linked list
  * @n: integer
@@ -42,4 +43,5 @@ void _pall(stack_t **stack, unsigned int line_number);
 void _push(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 void free_dlistint(stack_t *head);
+void _pop(stack_t **stack, unsigned int line_number);
 #endif
