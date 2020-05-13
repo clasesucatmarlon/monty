@@ -7,7 +7,7 @@
  */
 void _sub(stack_t **stack, unsigned int line_number)
 {
-    stack_t *tmp = *stack;
+	stack_t *tmp = *stack;
 	int sub = 0, i = 0;
 
 	if (tmp == NULL)
@@ -40,7 +40,7 @@ void _sub(stack_t **stack, unsigned int line_number)
  */
 void _mul(stack_t **stack, unsigned int line_number)
 {
-    stack_t *tmp = *stack;
+	stack_t *tmp = *stack;
 	int mul = 1, i = 0;
 
 	if (tmp == NULL)
