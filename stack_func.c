@@ -61,24 +61,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * free_dlistint - free a list
- * @head: pointer to first node
- *
- */
-void free_dlistint(stack_t *head)
-{
-	stack_t *tmp;
-
-	while (head != NULL)
-	{
-		tmp = head->next;
-		free(head);
-		head = tmp;
-	}
-}
-
-/**
- * _pop - remove a list
+ * _pop - remove element a list
  *@stack: pointer to first node
  *@line_number: integer
  *Return: void
@@ -97,3 +80,22 @@ void _pop(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 	free(nodo);
 }
+
+/**
+ * free_dlistint - free a list
+ * @head: pointer to first node
+ *
+ */
+void free_dlistint(stack_t *head)
+{
+	stack_t *tmp;
+
+	while (head != NULL)
+	{
+		tmp = head->next;
+		free(head);
+		head = tmp;
+	}
+}
+
+
