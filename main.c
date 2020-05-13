@@ -13,10 +13,10 @@ int main(int ac, char **av)
 	stack = NULL;
 	if (ac != 2)
 	{
-		printf("USAGE: monty file\n");
+		printf("USAGE: monty file \n");
 		exit(EXIT_FAILURE);
 	}
 	read_file(av[1], &stack);
-	/* recordar liberar memorias */
+	free(stack);
 	return (0);
 }
