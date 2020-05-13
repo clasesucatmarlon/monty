@@ -78,8 +78,9 @@ void free_dlistint(stack_t *head)
 	}
 }
 /**
- * free_dlistint - free a list
- * @head: pointer to first node
+ * _pop - remove data a list
+ * @stack: pointer to linked list stack
+ * @line_number: number of line opcode occurs on
  */
 void _pop(stack_t **stack, unsigned int line_number)
 {
