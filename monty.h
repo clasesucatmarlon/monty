@@ -1,20 +1,22 @@
-#ifndef MONTY
-#define MONTY
+#ifndef MONTY_H
+#define MONTY_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
 
-/*Variable global*/
-extern int push_arg;
 /*--- Struct Definitions ---*/
+extern int push_arg;
+
 /**
- * struct stack_s - doubly linked list
+ * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
- * @prev: points to the previous element
- * @next: points to the next element
+ * @prev: points to the previous element of the stack (or queue)
+ * @next: points to the next element of the stack (or queue)
  * Description: doubly linked list node structure
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct stack_s
 {
@@ -26,8 +28,9 @@ typedef struct stack_s
 /**
  * struct instruction_s - opcoode and its function
  * @opcode: the opcode
- * @f: function to handle
+ * @f: function to handle the opcode
  * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct instruction_s
 {
@@ -44,4 +47,6 @@ void _push(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
 void free_dlistint(stack_t *head);
 void _pop(stack_t **stack, unsigned int line_number);
+
+
 #endif
