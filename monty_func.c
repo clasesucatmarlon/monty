@@ -1,8 +1,7 @@
 #include "monty.h"
-int push_arg;
 /**
  * read_file - reads a bytecode file and runs commands
- * @filename: name to file
+ * @filename: pathname to file
  * @stack: pointer to the top of the stack
  */
 void read_file(char *filename, stack_t **stack)
@@ -14,6 +13,8 @@ void read_file(char *filename, stack_t **stack)
 	instruct_func s;
 	int check;
 	int read;
+
+
 	FILE *file = fopen(filename, "r");
 
 	if (file == NULL)
@@ -21,6 +22,7 @@ void read_file(char *filename, stack_t **stack)
 		printf("Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
+
 	while ((read = getline(&buffer, &i, file)) != -1)
 	{
 		line = parse_line(buffer, stack, line_count);
@@ -32,7 +34,7 @@ void read_file(char *filename, stack_t **stack)
 		s = get_op_func(line);
 		if (s == NULL)
 		{
-			printf("L<%d>: unknown instruction %s\n", line_count, line);
+			printf("L%d: unknown instruction %s\n", line_count, line);
 			exit(EXIT_FAILURE);
 		}
 		s(stack, line_count);
@@ -52,24 +54,27 @@ void read_file(char *filename, stack_t **stack)
 instruct_func get_op_func(char *str)
 {
 	int i;
+
 	instruction_t instruct[] = {
 		{"push", _push},
 		{"pall", _pall},
-		{"pint", _pint},
+        {"pint", _pint},
 		{"pop", _pop},
 		{NULL, NULL},
 	};
+
 	i = 0;
 	while (instruct[i].f != NULL && strcmp(instruct[i].opcode, str) != 0)
 	{
 		i++;
 	}
+
 	return (instruct[i].f);
 }
 
 /**
  * isnumber - checks if a string is a number
- * @str: string passed
+ * @str: string being passed
  * Return: returns 1 if string is a number, 0 otherwise
  */
 int isnumber(char *str)
@@ -102,14 +107,15 @@ int isnumber(char *str)
  */
 char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 {
-	char *op_code, *arg;
+	char *op_code, *push, *arg;
 	(void)stack;
 
+	push = "push";
 	op_code = strtok(line, "\n ");
-
 	if (op_code == NULL)
 		return (NULL);
-	if (strcmp(op_code, "push") == 0)
+
+	if (strcmp(op_code, push) == 0)
 	{
 		arg = strtok(NULL, "\n ");
 		if (isnumber(arg) == 1 && arg != NULL)
