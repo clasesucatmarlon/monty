@@ -7,14 +7,16 @@
 
 void _swap(stack_t **stack, unsigned int line_number)
 {
+	stack_t *runner;
 	int tmp;
 
-	if (stack == NULL || (*stack)->next == NULL)
+	runner = *stack;
+	if (runner == NULL || runner->next == NULL)
 	{
 		fprintf(stderr, "L%d can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	tmp = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = tmp;
+	tmp = runner->n;
+	runner->n = runner->next->n
+	runner->next->n = tmp;
 }
