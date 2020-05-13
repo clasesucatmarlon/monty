@@ -32,7 +32,7 @@ void read_file(char *filename, stack_t **stack)
 		s = get_op_func(line);
 		if (s == NULL)
 		{
-			printf("L%d: unknown instruction %s\n", line_count, line);
+			printf("L<%d>: unknown instruction %s\n", line_count, line);
 			exit(EXIT_FAILURE);
 		}
 		s(stack, line_count);
@@ -56,6 +56,7 @@ instruct_func get_op_func(char *str)
 		{"push", _push},
 		{"pall", _pall},
 		{"pint", _pint},
+		{"pop", _pop},
 		{NULL, NULL},
 	};
 	i = 0;
@@ -102,6 +103,7 @@ int isnumber(char *str)
 char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 {
 	char *op_code, *arg;
+	(void)stack;
 
 	op_code = strtok(line, "\n ");
 
