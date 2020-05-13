@@ -29,11 +29,21 @@ void _swap(stack_t **stack, unsigned int line_number)
 
 void _add(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL || (*stack)->next == NULL)
+	stack_t *tmp = *stack;
+	int count, sum;
+
+	while(tmp->next)
+	{
+		count++;
+		tmp = tmp->next;		
+	}
+	if (*stack == NULL || (*stack)->next == NULL || count < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short", line_number);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->next->n += (*stack)->n;
+	sum = (*stack)->next->n + (*stack)->n;
+
 	_pop(stack, line_number);
+	(*stack)->n = sum;
 }
