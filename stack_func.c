@@ -6,28 +6,21 @@
  */
 void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 {
-	stack_t *new;
-
-	new = malloc(sizeof(stack_t));
-	if (!new)
+	stack_t *top;
+	(void)line_number;
+	top = malloc(sizeof(stack_t));
+	if (top == NULL)
 	{
-		printf("Error: malloc failed\n");
+		printf(ERROR_MALLOC);
 		exit(EXIT_FAILURE);
 	}
-	if (*stack == NULL)
-	{
-		new->n = push_arg;
-		new->next = NULL;
-		new->prev = NULL;
-		*stack = new;
-		return;
-	}
 
-	(*stack)->prev = new;
-	new->n = push_arg;
-	new->next = *stack;
-	new->prev = NULL;
-	*stack = new;
+	top->n = num;
+	top->next = *stack;
+	top->prev = NULL;
+	if (*stack != NULL)
+		(*stack)->prev = top;
+	*stack = top;
 }
 
 /**
