@@ -49,15 +49,15 @@ void _mul(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	while (tmp)
+	while (tmp != NULL)
 	{
 		tmp = tmp->next;
 		i++;
 	}
 
-	if (stack == NULL || (*stack)->next == NULL || i <= 1)
+	if (stack == NULL || (*stack)->next == NULL || i < 2)
 	{
-		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		dprintf(STDOUT_FILENO, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	mul = (*stack)->next->n * (*stack)->n;
