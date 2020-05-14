@@ -59,7 +59,7 @@ void _mul(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _div - mul top of stack y second top stack
+ * _div - div top of stack y second top stack
  * @stack: pointer to lists for monty stack
  * @line_number: number of line opcode occurs on
  */
@@ -92,37 +92,34 @@ void _div(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * dobfree - free double pointer
- * @stack: double pointer to free
- * Return: void
+ * _mod - mod top of stack y second top stack
+ * @stack: pointer to lists for monty stack
+ * @line_number: number of line opcode occurs on
  */
-void dobfree(stack_t **stack)
+void _mod(stack_t **stack, unsigned int line_number)
 {
-	while (*stack)
+	int mod = 0;
+
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		dobfree2(stack);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
+		exit(EXIT_FAILURE);
 	}
-}
-
-/**
- * dobfree2 - free double pointer
- * @stack: double pointer to free
- * Return: void
- */
-void dobfree2(stack_t **stack)
-{
-	stack_t *tmp;
-
-	if ((*stack)->next)
+	else if ((*stack)->n == 0)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		(*stack) = tmp;
-		(*stack)->prev = NULL;
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		free(*stack);
-		*stack = NULL;
+		mod = (*stack)->n;
+		_pop(stack, line_number);
+		(*stack)->n %= mod;
 	}
 }
