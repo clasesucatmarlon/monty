@@ -89,7 +89,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 
 	runner = *stack;
 	val = runner->n;
-	if (!(val >= 0 && val <= 127))
+	if (!(val >= 1 || val <= 127))
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
 		free(var_global.buffer);
