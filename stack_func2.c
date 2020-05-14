@@ -91,9 +91,11 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	}
 
 	runner = *stack;
+	while (runner->next)
+		runner = runner->next;
 	c = runner->n;
 
-	if (_isalpha(c) == 0)
+	if (_isalpha(runner->n) == 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
