@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * _pstr - mod top of stack y second top stack
  * @stack: pointer to lists for monty stack
@@ -23,4 +22,17 @@ void _pstr(stack_t **stack, unsigned int line_number)
 		tmp = tmp->next;
 	}
 	putchar('\n');
+}
+
+/**
+ * _rotl - mod top of stack y second top stack
+ * @stack: pointer to lists for monty stack
+ * @line_number: number of line opcode occurs on
+ */
+void _rotl(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	if (*stack)
+		*stack = (*stack)->next;
 }
