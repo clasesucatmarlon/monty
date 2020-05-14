@@ -31,8 +31,15 @@ void _pstr(stack_t **stack, unsigned int line_number)
  */
 void _rotl(stack_t **stack, unsigned int line_number)
 {
+	stack_t *runner = *stack;
+	int aux1 = 0;
+
 	(void)line_number;
 
-	if (*stack)
-		*stack = (*stack)->next;
+	aux1 = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	while(runner)
+		runner = runner->next;
+
+	runner->n = aux1;
 }
