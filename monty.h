@@ -59,5 +59,6 @@ void _mul(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 
 void free_dlistint(stack_t *head);
+void dobfree(stack_t **stack);
 int _isalpha(int c);
 #endif
