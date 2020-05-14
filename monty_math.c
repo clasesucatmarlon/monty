@@ -107,18 +107,29 @@ void dobfree(stack_t **stack)
 
 	while (*stack)
 	{
-		if ((*stack)->next)
-		{
-			tmp = (*stack)->next;
-			free(*stack);
-			(*stack) = tmp;
-			(*stack)->prev = NULL;
-		}
-		else
-		{
-			free(*stack);
-			*stack = NULL;
-		}
-		(*stack) = (*stack)->next;
+		dobfree2(stack);
+	}
+}
+
+/**
+ * dobfree - free double pointer
+ * @stack: double pointer to free
+ * Return: void
+ */
+void dobfree2(stack_t **stack)
+{
+	stack_t *tmp;
+
+	if ((*stack)->next)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		(*stack) = tmp;
+		(*stack)->prev = NULL;
+	}
+	else
+	{
+		free(*stack);
+		*stack = NULL;
 	}
 }
