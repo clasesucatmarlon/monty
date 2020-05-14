@@ -75,33 +75,18 @@ void _nop(__attribute__ ((unused))stack_t **stack,
  */
 void _pchar(stack_t **stack, unsigned int line_number)
 {
-	stack_t *runner, *tmp = *stack;
-	char c;
-	int i = 0;
-
-	while(tmp)
-	{
-		tmp = tmp->next;
-		i++;
-	}
-	if (stack == NULL || *stack == NULL || i < 1)
+	if(!*stack || !stack)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	runner = *stack;
-	while (runner->next)
-		runner = runner->next;
-	c = runner->n;
-
-	if (_isalpha(c) == 0)
+	if ((*stack)->n > 127 || (*stack)->n < 0)
 	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		exit(EXIT_FAILURE);	
 	}
-	else
-		printf("%c\n", c);
+	putchar((*stack)->n);
+	putchar('\n');
 }
 
 /**
