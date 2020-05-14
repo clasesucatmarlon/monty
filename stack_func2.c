@@ -76,7 +76,7 @@ void _nop(__attribute__ ((unused))stack_t **stack,
 void _pchar(stack_t **stack, unsigned int line_number)
 {
 	stack_t *runner;
-	char c;
+	int val;
 
 	if (stack == NULL || *stack == NULL)
 	{
@@ -88,19 +88,17 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	}
 
 	runner = *stack;
-	while (runner->next)
-		runner = runner->next;
-	c = runner->n;
-
-	if (_isalpha(c) == 0)
+	val = runner->n;
+	if (!isprint(val))
 	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		printf("L%d: can't pchar, value out of range\n", line_number);
 		free(var_global.buffer);
 		fclose(var_global.file);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
-	putchar(c);
+
+	putchar(val);
 	putchar('\n');
 }
 
