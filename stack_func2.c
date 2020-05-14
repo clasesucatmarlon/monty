@@ -109,7 +109,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
  */
 int _isalpha(int c)
 {
-	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
+	if ((c >= 0 && c <= 127))
 		return (1);
 	else
 		return (0);
