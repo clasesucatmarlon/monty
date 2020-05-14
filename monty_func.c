@@ -26,7 +26,7 @@ void read_file(char *filename, stack_t **stack)
 	while ((read = getline(&buffer, &i, file)) != -1)
 	{
 		line = parse_line(buffer, stack, line_count);
-		if (line == NULL)
+		if (line == NULL || line[0] = "#")
 		{
 			line_count++;
 			continue;
