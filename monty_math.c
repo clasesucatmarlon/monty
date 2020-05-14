@@ -86,7 +86,7 @@ void _div(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	div = (*stack)->next->n - (*stack)->n;
+	div = (*stack)->next->n / (*stack)->n;
 	_pop(stack, line_number);
 
 	(*stack)->n = div;
