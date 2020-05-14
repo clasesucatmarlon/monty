@@ -89,7 +89,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 
 	runner = *stack;
 	val = runner->n;
-	if (!isprint(val))
+	if (!(val >= 0 && val <= 127))
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
 		free(var_global.buffer);
@@ -109,7 +109,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
  */
 int _isalpha(int c)
 {
-	if ((c >= 0 && c <= 127))
+	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
 		return (1);
 	else
 		return (0);
