@@ -69,6 +69,7 @@ instruct_func get_op_func(char *str)
 		{"pchar", _pchar},
 		{"pstr", _pstr},
 		{"rotl", _rotl},
+		{"rotr", _rotr},
 		{NULL, NULL},
 	};
 
