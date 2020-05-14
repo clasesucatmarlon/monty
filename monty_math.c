@@ -41,14 +41,14 @@ void _sub(stack_t **stack, unsigned int line_number)
 void _mul(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
-	int mul, i = 0;
+	int mul = 1, i = 0;
 
 	for (tmp = *stack; tmp; tmp = tmp->next)
 	{
 		i++;
 	}
 
-	if (i < 2)
+	if (i < 2 || stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		dobfree(stack);
