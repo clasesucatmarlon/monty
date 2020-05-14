@@ -40,24 +40,16 @@ void _sub(stack_t **stack, unsigned int line_number)
  */
 void _mul(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
-	int mul = 1, i = 0;
-
-	for (tmp = *stack; tmp; tmp = tmp->next)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		i++;
-	}
-
-	if (i < 2 || stack == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
-		dobfree(stack);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	mul = (*stack)->n;
-	_pop(stack, line_number);
-
-	(*stack)->n *= mul;
+	else
+	{
+		(*stack)->next->n *= (*stack)->n;
+		_pop(stack, line_number);
+	}
 }
 
 /**
@@ -110,7 +102,7 @@ void dobfree(stack_t **stack)
 }
 
 /**
- * dobfree - free double pointer
+ * dobfree2 - free double pointer
  * @stack: double pointer to free
  * Return: void
  */
