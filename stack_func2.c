@@ -76,23 +76,41 @@ void _nop(__attribute__ ((unused))stack_t **stack,
 void _pchar(stack_t **stack, unsigned int line_number)
 {
 	stack_t *runner;
-	int val;
+	char c;
 
-	if (*stack == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	runner = *stack;
-	val = runner->n;
+	while (runner)
+	{
+		if (runner->prev == NULL)
+			break;
+		runner = runner->prev;
+	}
+	c = runner->n;
 
-	if (!isprint(val))
+	if (_isalpha(runner->n) == 0)
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	putchar(val);
-	putchar('\n');
+	printf("%c\n", c);
+}
+
+/**
+ * _isalpha - checks if int is in alphabet
+ * @c: int
+ * Return: 1 if yes, 0 if no
+ */
+int _isalpha(int c)
+{
+	if (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')))
+		return (1);
+	else
+		return (0);
 }
