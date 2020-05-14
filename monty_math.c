@@ -45,7 +45,9 @@ void _mul(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-		dobfree(stack);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -69,11 +71,17 @@ void _div(stack_t **stack, unsigned int line_number)
 	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 	if (tmp == NULL)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 	while (tmp)
@@ -84,6 +92,9 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL || (*stack)->next == NULL || i <= 1)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 	div = (*stack)->next->n / (*stack)->n;
