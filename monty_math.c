@@ -103,8 +103,6 @@ void _div(stack_t **stack, unsigned int line_number)
  */
 void dobfree(stack_t **stack)
 {
-	stack_t *tmp;
-
 	while (*stack)
 	{
 		dobfree2(stack);
