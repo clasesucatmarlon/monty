@@ -58,4 +58,5 @@ void _add(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 
 void free_dlistint(stack_t *head);
+int _isalpha(int c);
 #endif
