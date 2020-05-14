@@ -40,15 +40,19 @@ void _sub(stack_t **stack, unsigned int line_number)
  */
 void _mul(stack_t **stack, unsigned int line_number)
 {
+	int aux;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		dobfree(stack);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		(*stack)->next->n *= (*stack)->n;
+		aux = (*stack)->n;
 		_pop(stack, line_number);
+		(*stack)->n *= aux;
 	}
 }
 
