@@ -6,7 +6,6 @@
  */
 void read_file(char *filename, stack_t **stack)
 {
-	char *buffer = NULL;
 	char *line;
 	size_t i = 0;
 	int line_count = 1;
@@ -15,17 +14,17 @@ void read_file(char *filename, stack_t **stack)
 	int read;
 
 
-	FILE *file = fopen(filename, "r");
+	var_global.file = fopen(filename, "r");
 
-	if (file == NULL)
+	if (var_global.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&buffer, &i, file)) != -1)
+	while ((read = getline(&var_global.buffer, &i, var_global.file)) != -1)
 	{
-		line = parse_line(buffer, stack, line_count);
+		line = parse_line(var_global.buffer, stack, line_count);
 		if (line == NULL || line[0] == '#')
 		{
 			line_count++;
@@ -40,8 +39,8 @@ void read_file(char *filename, stack_t **stack)
 		s(stack, line_count);
 		line_count++;
 	}
-	free(buffer);
-	check = fclose(file);
+	free(var_global.buffer);
+	check = fclose(var_global.file);
 	if (check == -1)
 		exit(-1);
 }
@@ -129,7 +128,7 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 		arg = strtok(NULL, "\n ");
 		if (isnumber(arg) == 1 && arg != NULL)
 		{
-			push_arg = atoi(arg);
+			var_global.push_arg = atoi(arg);
 		}
 		else
 		{
