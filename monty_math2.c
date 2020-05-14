@@ -43,14 +43,17 @@ void _mod(stack_t **stack, unsigned int line_number)
 void _pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
+	int c = 0;
 
 	(void)line_number;
 
+
 	while (tmp)
 	{
-		if (tmp->n == 0)
+		c = tmp->n;
+		if (c == 0 || _isalpha(c) == 0)
 			break;
-		putchar(tmp->n);
+		putchar(c);
 		tmp = tmp->next;
 	}
 	putchar('\n');
