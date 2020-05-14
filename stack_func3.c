@@ -31,21 +31,21 @@ void _pstr(stack_t **stack, unsigned int line_number)
  */
 void _rotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t *runner;
-	int aux1, aux2;
-	(void)line_number;
+	stack_t *runner = *stack;
 
-	aux1 = (*stack)->n;
-	runner = *stack;
 
-	while (runner)
+	int aux1 = 0;
+
+	if (!line_number || !stack || !*stack || !(*stack)->next)
+		return;
+
+	aux1 = runner->n;
+
+	while (runner->next)
 	{
-		if (runner->next == NULL)
-			break;
 		runner = runner->next;
+		runner->prev->n = runner->n;
 	}
 
-	aux2 = runner->n;
-	(*stack)->n = aux2;
 	runner->n = aux1;
 }
