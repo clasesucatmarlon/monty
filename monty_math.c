@@ -54,7 +54,7 @@ void _mul(stack_t **stack, unsigned int line_number)
 		i++;
 	}
 
-	if (i < 2)
+	if (i < 2 || !*stack || !stack)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		dobfree(stack);
