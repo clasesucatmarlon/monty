@@ -45,25 +45,25 @@ void _mul(stack_t **stack, unsigned int line_number)
 
 	if (tmp == NULL)
 	{
-		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
 	while (tmp)
 	{
 		tmp = tmp->next;
 		i++;
 	}
 
-	if (i < 2 || !*stack || !stack)
+	if (stack == NULL || (*stack)->next == NULL || i <= 1)
 	{
-		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
-		dobfree(stack);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	mul = (*stack)->n;
+	mul = (*stack)->next->n * (*stack)->n;
 	_pop(stack, line_number);
 
-	(*stack)->n *= mul;
+	(*stack)->n = mul;
 }
 
 /**
