@@ -85,21 +85,17 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	}
 
 	runner = *stack;
-	while (runner)
-	{
-		if (runner->prev == NULL)
-			break;
-		runner = runner->prev;
-	}
+	while (runner->next)
+		runner = runner->next;
 	c = runner->n;
 
-	if (_isalpha(runner->n) == 0)
+	if (_isalpha(c) == 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
-	printf("%c\n", c);
+	else
+		printf("%c\n", c);
 }
 
 /**
@@ -109,7 +105,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
  */
 int _isalpha(int c)
 {
-	if (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')))
+	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
 		return (1);
 	else
 		return (0);
