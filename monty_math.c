@@ -105,16 +105,20 @@ void dobfree(stack_t **stack)
 {
 	stack_t *tmp;
 
-	if ((*stack)->next)
+	while (*stack)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		(*stack) = tmp;
-		(*stack)->prev = NULL;
-	}
-	else
-	{
-		free(*stack);
-		*stack = NULL;
+		if ((*stack)->next)
+		{
+			tmp = (*stack)->next;
+			free(*stack);
+			(*stack) = tmp;
+			(*stack)->prev = NULL;
+		}
+		else
+		{
+			free(*stack);
+			*stack = NULL;
+		}
+		(*stack) = (*stack)->next;
 	}
 }
