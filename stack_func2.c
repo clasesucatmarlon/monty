@@ -75,7 +75,6 @@ void _nop(__attribute__ ((unused))stack_t **stack,
  */
 void _pchar(stack_t **stack, unsigned int line_number)
 {
-	stack_t *runner;
 	int val;
 
 	if (stack == NULL || *stack == NULL)
@@ -87,9 +86,8 @@ void _pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	runner = *stack;
-	val = runner->n;
-	if (!(val >= 1 || val <= 127))
+	val = (*stack)->n;
+	if (val > 127 || val < 0)
 	{
 		printf("L%d: can't pchar, value out of range\n", line_number);
 		free(var_global.buffer);
