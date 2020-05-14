@@ -81,6 +81,9 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -92,6 +95,9 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	if (_isalpha(c) == 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free(var_global.buffer);
+		fclose(var_global.file);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 	putchar(c);
