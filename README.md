@@ -17,8 +17,8 @@ Ubuntu 14.04 LTS via Vagrant in VirtualBox and compiled with GCC version 4.8.4
 
 ### Resources:books:
 Read or watch:
-* [Google)](https://intranet.hbtn.io/rltoken/56-bDz7IrFgcH02EkGkB3w)
-* [create dynamic libraries on Linux](https://intranet.hbtn.io/rltoken/9neX6gaN6DoA-ow1INgZqw)
+* [Google](https://intranet.hbtn.io/rltoken/56-bDz7IrFgcH02EkGkB3w)
+* [Create dynamic libraries on Linux](https://intranet.hbtn.io/rltoken/9neX6gaN6DoA-ow1INgZqw)
 
 
 ### Learning Objectives:bulb:
