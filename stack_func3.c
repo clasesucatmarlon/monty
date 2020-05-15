@@ -66,9 +66,9 @@ void _rotr(stack_t **stack, unsigned int line_number)
 
 	while (runner->next)
 		runner = runner->next;
-	
+
 	aux1 = runner->n;
-	
+
 	while (runner->prev)
 	{
 		runner = runner->prev;
