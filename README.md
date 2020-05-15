@@ -203,5 +203,6 @@ Monty Files:
 
 ## Autors
 
--   ***Marlon Aurelio García Morales - ***  <img src="https://avatars1.githubusercontent.com/u/60376045?s=400&u=e0a843e701d1d571676809481bd966ec74f5660c&v" alt="https://github.com/clasesucatmarlon" width="60" height="60">
+-   ***Marlon Aurelio García Morales - https://github.com/clasesucatmarlon*** 
+    <img src="https://avatars1.githubusercontent.com/u/60376045?s=400&u=e0a843e701d1d571676809481bd966ec74f5660c&v" alt="" width="80" height="60">
 -   ***Deiwin Ignacio Monsalve Altamar - <https://github.com/Deiwin-Ignacio-Monsalve-Altamar>***
